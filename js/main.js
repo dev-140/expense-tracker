@@ -71,6 +71,7 @@ $(document).ready(function() {
     $('.bottom-nav .expense.btn , .close-add').on('click' , (e) => {
         $('.input-data').toggleClass('active');
         $('.background').toggleClass('expense');
+        $('.account-balance .text').toggleClass('active');
         $('.expense-container').toggleClass('active');
     });
 
@@ -78,7 +79,7 @@ $(document).ready(function() {
         $('.input-data-income').toggleClass('active');
         $('.background').toggleClass('income');
         $('.income-container').toggleClass('active');
-        $('.expense-container').toggleClass('null');
+        $('.account-balance .text').toggleClass('active');
     });
 
     //income function

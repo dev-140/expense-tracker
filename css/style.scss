@@ -34,11 +34,26 @@ body {
     width: 100%;
     min-height: 100px;
     padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 
     .text {
-        color: rgb(126, 123, 123);
+        color: #fff;
+        font-size: 26px;
+        border-radius: 10px;
+        width: fit-content;
+        padding: 0 10px;
         text-align: center;
+        margin: auto;
         margin-top: 0px;
+        font-weight: bolder;
+        background-color: #0077FF;
+        transition: all 1s;
+
+        &.active {
+            background-color: transparent;
+        }
     }
 
     .total-bal {
@@ -72,12 +87,9 @@ body {
             transition: all 1s;
 
             &.active {
-                position: absolute;
-                right: 20%;
-                width: 61%;
-                margin-top: 421px;
-                z-index: 99;
-                height: 50px;
+                width: 100%;
+                border: solid 3px #fff;
+                margin-right: 10px;
             }
 
             .text {
@@ -102,16 +114,9 @@ body {
             transition: all 1s;
 
             &.active {
-                position: absolute;
-                right: 20%;
-                width: 61%;
-                margin-top: 421px;
-                z-index: 99;
-                height: 50px;
-            }
-
-            &.null {
-                margin-left: 10%;
+                width: 100%;
+                border: solid 3px #fff;
+                margin-left: 10px;
             }
 
             .text {
