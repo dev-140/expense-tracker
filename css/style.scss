@@ -1,0 +1,316 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, rgba(139, 80, 255, 0) 0%, rgba(139, 80, 255, 0.24) 100%);
+    position: relative;
+}
+
+.background {
+    display: flex;
+    flex-flow: column;
+    padding: 0 20px;
+    min-height: 100vh;
+    padding-bottom: 100px;
+    transition: all 1s;
+    position: relative;
+
+    &.expense {
+        color: #fff !important;
+        background-color: #FD3C4A;
+    }
+
+    &.income {
+        color: #fff !important;
+        background-color: #00A86B;
+    }
+}
+
+.account-balance {
+    width: 100%;
+    min-height: 100px;
+    padding-top: 30px;
+
+    .text {
+        color: rgb(126, 123, 123);
+        text-align: center;
+        margin-top: 0px;
+    }
+
+    .total-bal {
+        font-size: 40px;
+        margin-top: 0px;
+        text-align: center;
+        font-weight: bolder;
+    }
+}
+
+.header {
+    .heading {
+        text-align: center;
+        margin-top: 0;
+    }
+
+    .data-container {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+
+        .income-container {
+            display: flex;
+            flex-flow: column;
+            height: 60px;
+            align-items: center;
+            justify-content: center;
+            width: 49%;
+            border-radius: 20px;
+            background-color: #00A86B;
+            transition: all 1s;
+
+            &.active {
+                position: absolute;
+                right: 20%;
+                width: 61%;
+                margin-top: 421px;
+                z-index: 99;
+                height: 50px;
+            }
+
+            .text {
+                margin-bottom: 0px;
+            }
+
+            p {
+                color: #fff;
+                margin: 0;
+            }
+        }
+
+        .expense-container{
+            display: flex;
+            flex-flow: column;
+            height: 60px;
+            align-items: center;
+            justify-content: center;
+            width: 49%;
+            border-radius: 20px;
+            background-color: #FD3C4A;
+            transition: all 1s;
+
+            &.active {
+                position: absolute;
+                right: 20%;
+                width: 61%;
+                margin-top: 421px;
+                z-index: 99;
+                height: 50px;
+            }
+
+            &.null {
+                margin-left: 10%;
+            }
+
+            .text {
+                margin-bottom: 0px;
+            }
+
+            p {
+                color: #fff;
+                margin: 0;
+            }
+        }
+    }
+}
+
+.input-data-income {
+    z-index: 9;
+    transition: all 1s;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 270px;
+    width: 100%;
+    margin-left: -100vw;
+    margin-bottom: -17px;
+
+    &.active {
+        margin-left: 0;
+        margin-bottom: -17px;
+    }
+
+    .close-add-income {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+    input {
+        width: 90%;
+        height: 40px;
+        border-radius: 10px;
+        outline: none;
+        border: solid 1px #8c8a8a;
+        padding: 3px;
+        font-size: 20px;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .addBtn-income {
+        width: 90%;
+        height: 40px;
+        border-radius: 10px;
+        outline: none;
+        border: none;
+        text-transform: uppercase;
+        color: #fff;
+        font-weight: bold;
+        background-color: #7F3DFF;
+    }
+}
+
+.input-data {
+    z-index: 9;
+    transition: all 1s;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 270px;
+    width: 100%;
+    margin-left: -100vw;
+    margin-bottom: -17px;
+
+    &.active {
+        margin-left: 0;
+        margin-bottom: -17px;
+    }
+
+    .close-add {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+    input {
+        width: 90%;
+        height: 40px;
+        border-radius: 10px;
+        outline: none;
+        border: solid 1px #8c8a8a;
+        padding: 3px;
+        font-size: 20px;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .addBtn {
+        width: 90%;
+        height: 40px;
+        border-radius: 10px;
+        outline: none;
+        border: none;
+        text-transform: uppercase;
+        color: #fff;
+        font-weight: bold;
+        background-color: #7F3DFF;
+    }
+}
+
+.datas {
+    margin-top: 20px;
+
+    .render {
+        position: relative;
+        display: flex;
+        flex-flow: row;
+        text-transform: uppercase;
+        width: 100%;
+        height: 50px;
+        color: #fff;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 80px;
+        margin-bottom: 10px;
+        padding-left: 10px;
+        font-weight: bolder;
+        letter-spacing: 2px;
+        background-color: #7F3DFF;
+        border-radius: 20px;
+
+        p {
+            margin: 0;
+        }
+
+        .removeExp {
+            position: absolute;
+            right: 10px;
+        }
+    }
+}
+
+.renderTotalExp {
+    display: block;
+}
+
+.bottom-nav {
+    width: 100%;
+    height: 100px;
+    background-color: rgb(249, 249, 249);
+    position: absolute;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    left: 0px;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: -17px;
+
+    .btn {
+        width: 100px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #b1b1b1;
+        border-radius: 100px;
+        font-size: 13px;
+        color: #fff;
+
+        &.income {
+            background-color: #00A86B;
+        }
+
+        &.expense {
+            background-color: #FD3C4A;
+        }
+
+        &.summary {
+            background-color: #0077FF;
+        }
+    }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="background">
+        <div class="account-balance">
+            <p class="text">Acount Balance</p>
+            <p class="total-bal">P 3000</p>
+        </div>
+
+        <div class="header">
+            <div class="data-container">
+                <div class="income-container">
+                    <p class="text">Income</p>
+                    <p class="dataIncome">P 5000</p>
+                </div>
+                <div class="expense-container">
+                    <p class="text">Expense</p>
+                    <p class="dataExpense">P 5000</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="datas"></div>
+        <p id="total">YOUR TOTAL EXPENSE IS: ₱ 0</p>
+        <div class="renderTotalExp"></div>
+
+        <p class="data-income-handler"></p>
+
+    </div>
+
+    <div class="bottom-nav">
+        <span class="income btn">Add income</span>
+        <span class="expense btn">Add expense</span>
+        <span class="summary btn">Summary</span>
+    </div>
+
+    <div class="input-data">
+        <img src="/images/close.png" alt="" class="close-add">
+        <input type="text"  class="desc" placeholder="Add description">
+        <input type="number" class="value" placeholder="₱ XXX XXX XXX">
+        <button class="addBtn">continue</button>
+    </div>
+
+    <div class="input-data-income">
+        <img src="/images/close.png" alt="" class="close-add-income">
+        <input type="number" class="value-input" placeholder="₱ XXX XXX XXX">
+        <button class="addBtn-income">continue</button>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
