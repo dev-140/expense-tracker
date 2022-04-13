@@ -1,28 +1,4 @@
 $(document).ready(function() {
-    $('.addBtn').on('click', (e) => {
-        var value = $('.value').val();
-        var desc = $('.desc').val();
-        var renderText = desc + value; 
-        var subTotal = $('#total').text();
-        var numb = subTotal.match(/\d/g);
-        var numb = numb.join("");
-        var total = parseInt(numb) + parseInt(value);
-
-        localStorage.setItem(desc,renderText);
-        $('.expense-container .dataExpense').text('₱ ' + total);
-        $('.desc').val('');
-        $('.value').val('');
-        $('.datas').append('<div class="render">' + desc + '<p>' + value + ' </p> <span class="removeExp" data-id="'+desc+'">x</span> </div>');
-    });
-
-    $('.addBtn-income').on('click', (e) => {
-        var value = $('.input-data-income .value-input').val();
-
-        $('.data-income-handler').text(value);
-        $('.input-data-income .value-input').val('');
-        localStorage.setItem('income', value);
-    });
-
     for (var i = 0; i < localStorage.length; i++) {
         var data = localStorage.getItem(localStorage.key(i));
         total = [0];
@@ -33,39 +9,40 @@ $(document).ready(function() {
         var numb = numb.join("");
         $('.datas').append('<div class="render">' + desc + '<p>₱ ' + numb + ' </p> <span class="removeExp" data-id="'+desc+'">x</span> </div>');
         $('.renderTotalExp').append('<p class="price '+desc+'" data-num="'+ numb +'">'+ numb +'</p>');
-        console.log(desc);
         var $numbers = $('.renderTotalExp p');
         var sum = 0;
-
+        var income = window.localStorage.getItem('income');
         $numbers.each(function() {
-        sum += parseInt($(this).data('num'));
+            sum += parseInt($(this).data('num'));
         });
+        var incomeSubTotal = parseInt(income) - parseInt(income) - parseInt(income) + parseInt(sum);
 
-        $('.expense-container .dataExpense').text('₱ ' + sum);
-        $('#total').text('YOUR TOTAL EXPENSE IS: ₱ ' + sum);
-
-        console.log(sum);
+        console.log(incomeSubTotal);
+        $('.expense-container .dataExpense').text('₱ ' + incomeSubTotal);
+        $('#total').text('YOUR TOTAL EXPENSE IS: ₱ ' + incomeSubTotal);
     }
 
-
-
-    // remove functions
-    $('.removeExp').on('click', (e) => {
-        var $this = $(e.currentTarget);
-        var value = $this.data('id');
-        var exp = $this.parent().children().text();
-        var numbExp = exp.match(/\d/g);
-        var numbExp = numbExp.join("");
-        var subTotal = $('#total').text();
-        var numbTotal = subTotal.match(/\d/g);
-        var numbTotal = numbTotal.join("");
-        var total = parseInt(numbTotal) - parseInt(numbExp); 
-
-        $this.parent().remove();
-        $('.' + value ).remove();
-        $('#total').text('YOUR TOTAL EXPENSE IS: ₱ ' + total)
-        window.localStorage.removeItem(value);
-    });
+    // remove functions 
+    setInterval(function () {
+        $('.removeExp').on('click', (e) => {
+            var $this = $(e.currentTarget);
+            var value = $this.data('id');
+            var exp = $this.parent().children().text();
+            var numbExp = exp.match(/\d/g);
+            var numbExp = numbExp.join("");
+            var subTotal = $('#total').text();
+            var numbTotal = subTotal.match(/\d/g);
+            var numbTotal = numbTotal.join("");
+            var total = parseInt(numbTotal) - parseInt(numbExp); 
+    
+            $this.parent().remove();
+            $('.' + value ).remove();
+            // setInterval(function () {
+            //     $('#total').text('YOUR TOTAL EXPENSE IS: ₱ ' + total);
+            // },);
+            window.localStorage.removeItem(value);
+        });
+    },);
 
     //bottom nav functions
     $('.bottom-nav .expense.btn , .close-add').on('click' , (e) => {
@@ -83,19 +60,159 @@ $(document).ready(function() {
     });
 
     //income function
-    var income = window.localStorage.getItem('income');
-    var x = $('.renderTotalExp .price').text();
-    $('.data-income-handler').text(income);
+    $.fn.dataExpense = function() {
+        var income = window.localStorage.getItem('income');
+        $('.data-income-handler').text(income);
 
-    $.fn.income = (e) => {
-        var $this = $(e.currentTarget);
-        $this.addClass('active');
-        console.log('hello')
+        $('.renderTotalExp .price').each(function(e) {
+            if($(this).text() === income) {
+                // $(this).remove();
+                $(this).addClass('income');
+            }
+        });
+
+        $('.datas .render p').each(function(e) {
+            if($(this).text() === '₱ ' + income + ' ') {
+                // $(this).remove();
+                $(this).parent().addClass('income');
+            }
+        });
+
+        $('.render.income, .renderTotalExp .price.income').remove();
     }
 
-    if(x === income) {
-        $.fn.income();
+    $.fn.dataExpense();
+
+    var status = true;
+
+    $.fn.filter = function() {
+        var words = $('.desc').val();
+        var str = $('.render').text();
+        var x = str.replace(/[0-9, x ,₱]/g, ' ');
+        $('.input-data .warning').text('Add data or This word is already used!');
+        // var result = x.match(wordss);
+
+        if(x.match(words)) {
+            $('.input-data .warning').slideDown();
+            status = true;
+        }else{
+            $('.input-data .warning').slideUp();
+            status = false;
+        }
+        
     }
+
+    setInterval(function () {
+        $.fn.filter();  
+    },);
+
+    $('.addBtn').on('click', (e) => {
+        var value = $('.value').val();
+        var desc = $('.desc').val();
+        var renderText = desc + value; 
+        var subTotal = $('#total').text();
+        var numb = subTotal.match(/\d/g);
+        var numb = numb.join("");
+        var total = parseInt(numb) + parseInt(value);
+
+        if(status === true){
+            console.log('change the word')
+        }else{
+            localStorage.setItem(desc,renderText);
+        
+            $('.desc').val('');
+            $('.value').val('');
+            $('.datas').append('<div class="render">' + desc + '<p> ₱' + value + ' </p> <span class="removeExp" data-id="'+desc+'">x</span> </div>');
+
+            var $numbers = $('.renderTotalExp p');
+            var sum = 0;
+            var income = window.localStorage.getItem('income');
+            $numbers.each(function() {
+                sum += parseInt($(this).data('num'));
+            });
+
+            var incomeSubTotal = parseInt(income) - parseInt(income) - parseInt(income) + parseInt(sum);
+            var incomeTotal = parseInt(income) - parseInt(sum);
+            var expTotal = sum;
+            
+            console.log(incomeSubTotal);
+            console.log(incomeTotal);
+            console.log(expTotal);
+
+            $('.renderTotalExp').append('<p class="price '+desc+'" data-num="'+ value +'">'+ value +'</p>');
+            $('.income-container .dataIncome').text('₱ ' + incomeTotal);
+
+            setTimeout(function() {
+                var $numbers = $('.renderTotalExp p');
+                var sum = 0;
+                var income = window.localStorage.getItem('income');
+                $numbers.each(function() {
+                    sum += parseInt($(this).data('num'));
+                });
+
+                $('.expense-container .dataExpense').text('₱ ' + sum);
+                $('#total').text('YOUR TOTAL EXPENSE IS: ₱ ' + sum);
+            }, 1);
+        } 
+    });
+
+    $('.addBtn-income').on('click', (e) => {
+        var value = $('.input-data-income .value-input').val();
+
+        $('.data-income-handler').text(value);
+        $('.input-data-income .value-input').val('');
+        localStorage.setItem('income', value);
+    });
+
+    setInterval(function () {
+        var $numbers = $('.renderTotalExp p');
+        var sum = 0;
+        var income = window.localStorage.getItem('income');
+        $numbers.each(function() {
+            sum += parseInt($(this).data('num'));
+        });
+        var incomeSubTotal = parseInt(income) - parseInt(sum);
+
+        $('.income-container .dataIncome, .account-balance .total-bal').text('₱ ' + incomeSubTotal);
+        $('.expense-container .dataExpense').text(sum);
+        $('#total').text('YOUR TOTAL EXPENSE IS: ₱ ' + sum);
+
+        if($('.account-balance .total-bal').text() === '₱ NaN'){
+            $('.account-balance .total-bal').text('Add income');
+        }else{
+            $('.account-balance .total-bal').text('₱ ' + incomeSubTotal);
+        }
+    },);
+
+    //checker function
+    setInterval(function () {
+        if($('.input-data .desc').val() === ('')){
+            $('.addBtn').hide();
+            $('.addBtn-disable').show();
+        }else if($('.input-data .value').val() === ('')){
+            $('.addBtn').hide();
+            $('.addBtn-disable').show();
+        } else {
+            $('.addBtn').show();
+            $('.addBtn-disable').hide();
+        }
+
+        if($('.input-data-income .value-input').val() === '') {
+            $('.addBtn-income').hide();
+            $('.addBtn-income-disable').show();
+        }else{
+            $('.addBtn-income').show();
+            $('.addBtn-income-disable').hide();
+        }
+    },);
+
+    
+
+    // $('.addBtn-disable').on('click', (e)=> {
+        
+    // })
+
 });
 
-
+// setInterval(function () {
+// },);

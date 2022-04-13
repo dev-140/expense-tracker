@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tracker</title>
+    <link rel="icon" href="/images/logo.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
@@ -15,18 +16,18 @@
     <div class="background">
         <div class="account-balance">
             <p class="text">Acount Balance</p>
-            <p class="total-bal">P 3000</p>
+            <p class="total-bal">₱ 0</p>
         </div>
 
         <div class="header">
             <div class="data-container">
                 <div class="income-container">
                     <p class="text">Income</p>
-                    <p class="dataIncome">P 5000</p>
+                    <p class="dataIncome">P 0</p>
                 </div>
                 <div class="expense-container">
                     <p class="text">Expense</p>
-                    <p class="dataExpense">P 5000</p>
+                    <p class="dataExpense">P 0</p>
                 </div>
             </div>
         </div>
@@ -36,7 +37,6 @@
         <div class="renderTotalExp"></div>
 
         <p class="data-income-handler"></p>
-
     </div>
 
     <div class="bottom-nav">
@@ -47,15 +47,18 @@
 
     <div class="input-data">
         <img src="/images/close.png" alt="" class="close-add">
+        <p class="warning"></p>
         <input type="text"  class="desc" placeholder="Add description">
         <input type="number" class="value" placeholder="₱ XXX XXX XXX">
         <button class="addBtn">continue</button>
+        <button class="addBtn-disable">Please add data</button>
     </div>
 
     <div class="input-data-income">
         <img src="/images/close.png" alt="" class="close-add-income">
         <input type="number" class="value-input" placeholder="₱ XXX XXX XXX">
         <button class="addBtn-income">continue</button>
+        <button class="addBtn-income-disable">Please add data</button>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
