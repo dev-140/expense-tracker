@@ -33,16 +33,18 @@
         </div>
 
         <div class="datas"></div>
-        <p id="total">YOUR TOTAL EXPENSE IS: ₱ 0</p>
+        <p id="total" class="total">YOUR TOTAL EXPENSE IS: ₱ 0</p>
         <div class="renderTotalExp"></div>
 
         <p class="data-income-handler"></p>
     </div>
 
-    <div class="bottom-nav">
-        <span class="income btn">Add income</span>
-        <span class="expense btn">Add expense</span>
-        <span class="summary btn">Summary</span>
+    <div class="bottom-nav-container">
+        <div class="bottom-nav">
+            <span class="income btn">Add income</span>
+            <span class="expense btn">Add expense</span>
+            <span class="summary btn">Summary</span>
+        </div>  
     </div>
 
     <div class="input-data">
@@ -56,6 +58,7 @@
 
     <div class="input-data-income">
         <img src="/images/close.png" alt="" class="close-add-income">
+        <p>Add your income here!</p>
         <input type="number" class="value-input" placeholder="₱ XXX XXX XXX">
         <button class="addBtn-income">continue</button>
         <button class="addBtn-income-disable">Please add data</button>

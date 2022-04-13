@@ -50,6 +50,7 @@ $(document).ready(function() {
         $('.background').toggleClass('expense');
         $('.account-balance .text').toggleClass('active');
         $('.expense-container').toggleClass('active');
+        $('.total').toggleClass('active');
     });
 
     $('.bottom-nav .income.btn , .close-add-income').on('click' , (e) => {
@@ -57,6 +58,7 @@ $(document).ready(function() {
         $('.background').toggleClass('income');
         $('.income-container').toggleClass('active');
         $('.account-balance .text').toggleClass('active');
+        $('.total').toggleClass('active');
     });
 
     //income function
