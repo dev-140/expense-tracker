@@ -14,26 +14,32 @@
 <body>
 
     <div class="background">
-        <div class="account-balance">
-            <p class="text">Acount Balance</p>
-            <p class="total-bal">₱ 0</p>
-        </div>
-
-        <div class="header">
-            <div class="data-container">
-                <div class="income-container">
-                    <p class="text">Income</p>
-                    <p class="dataIncome">P 0</p>
-                </div>
-                <div class="expense-container">
-                    <p class="text">Expense</p>
-                    <p class="dataExpense">P 0</p>
+        <div class="fixed">
+            <div class="account-balance">
+                <p class="text">Acount Balance</p>
+                <p class="total-bal">₱ 0</p>
+            </div>
+    
+            <div class="header">
+                <div class="data-container">
+                    <div class="income-container">
+                        <p class="text">Income</p>
+                        <p class="dataIncome">P 0</p>
+                    </div>
+                    <div class="expense-container">
+                        <p class="text">Expense</p>
+                        <p class="dataExpense">P 0</p>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <div class="divider"></div>
+
         <div class="datas"></div>
+
         <p id="total" class="total">YOUR TOTAL EXPENSE IS: ₱ 0</p>
+        
         <div class="renderTotalExp"></div>
 
         <p class="data-income-handler"></p>
@@ -43,7 +49,7 @@
         <div class="bottom-nav">
             <span class="income btn">Add income</span>
             <span class="expense btn">Add expense</span>
-            <span class="summary btn">Summary</span>
+            <span class="summary btn view">Summary</span>
         </div>  
     </div>
 

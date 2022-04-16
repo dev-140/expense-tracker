@@ -47,7 +47,7 @@ $(document).ready(function() {
     //bottom nav functions
     $('.bottom-nav .expense.btn , .close-add').on('click' , (e) => {
         $('.input-data').toggleClass('active');
-        $('.background').toggleClass('expense');
+        $('.background, .fixed').toggleClass('expense');
         $('.account-balance .text').toggleClass('active');
         $('.expense-container').toggleClass('active');
         $('.total').toggleClass('active');
@@ -55,7 +55,7 @@ $(document).ready(function() {
 
     $('.bottom-nav .income.btn , .close-add-income').on('click' , (e) => {
         $('.input-data-income').toggleClass('active');
-        $('.background').toggleClass('income');
+        $('.background, .fixed').toggleClass('income');
         $('.income-container').toggleClass('active');
         $('.account-balance .text').toggleClass('active');
         $('.total').toggleClass('active');
@@ -175,9 +175,10 @@ $(document).ready(function() {
         });
         var incomeSubTotal = parseInt(income) - parseInt(sum);
 
-        $('.income-container .dataIncome, .account-balance .total-bal').text('₱ ' + incomeSubTotal);
-        $('.expense-container .dataExpense').text(sum);
+        $('.account-balance .total-bal').text('₱ ' + incomeSubTotal);
+        $('.expense-container .dataExpense').text('₱ ' + sum);
         $('#total').text('YOUR TOTAL EXPENSE IS: ₱ ' + sum);
+        $('.income-container .dataIncome').text('₱ ' + income);
 
         if($('.account-balance .total-bal').text() === '₱ NaN'){
             $('.account-balance .total-bal').text('Add income');
@@ -208,12 +209,18 @@ $(document).ready(function() {
         }
     },);
 
-    
-
-    // $('.addBtn-disable').on('click', (e)=> {
+    //summsry function 
+    $('.summary.view').on('click', (e)=> {
+        $('.datas').toggleClass('active');
         
-    // })
-
+        if ($('.datas').hasClass('active')) {
+                $('.render').slideUp();
+            console.log('up');
+        } else {
+            $('.render').slideDown();
+            console.log('down');
+        }
+    });
 });
 
 // setInterval(function () {

@@ -10,16 +10,38 @@ html {
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(180deg, rgba(139, 80, 255, 0) 0%, rgba(139, 80, 255, 0.24) 100%);
     position: relative;
     display: flex;
     flex-flow: column;
     align-items: center;
+    background-color: #e4e4e4;
     justify-content: center;
+    overflow-y: hidden;
 }
 
 button, .close-add-income, .close-add, .removeExp, .btn {
     cursor: pointer !important;
+}
+
+/* Firefox */
+* {
+scrollbar-width: auto;
+scrollbar-color: #ffffff #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+width: 0;
+}
+
+*::-webkit-scrollbar-track {
+background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+background-color: #ffffff;
+border-radius: 10px;
+border: 0px solid #ffffff;
 }
 
 .background {
@@ -33,26 +55,27 @@ button, .close-add-income, .close-add, .removeExp, .btn {
     width: 100vw;
 
     &.expense {
-        color: #fff !important;
         background-color: #FD3C4A;
     }
 
     &.income {
-        color: #fff !important;
         background-color: #00A86B;
     }
 }
 
 .account-balance {
+    border-radius: 20px;
     width: 100%;
     min-height: 100px;
     padding-top: 30px;
+    margin: 10px 0;
+    margin-top: 10px;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    background: linear-gradient(183.33deg, #FFF6E6 9.56%, rgba(248, 237, 216, 0) 124.27%);
 
     .text {
-        color: rgb(0, 0, 0);
         font-size: 26px;
         border-radius: 10px;
         width: fit-content;
@@ -65,7 +88,7 @@ button, .close-add-income, .close-add, .removeExp, .btn {
 
         &.active {
             background-color: transparent;
-            color: #fff;
+            color: #000;
         }
     }
 
@@ -74,6 +97,11 @@ button, .close-add-income, .close-add, .removeExp, .btn {
         margin-top: 0px;
         text-align: center;
         font-weight: bolder;
+
+        &.active {
+            background-color: transparent;
+            color: #000 !important;
+        }
     }
 }
 
@@ -287,9 +315,20 @@ button, .close-add-income, .close-add, .removeExp, .btn {
 }
 
 .datas {
-    margin-top: 20px;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    margin-top: 300px;
+    transition: all 0.3s;
+    max-height: 300px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+
+    &.active {
+        opacity: 0;
+    }
 
     .render {
+        scroll-snap-align: start;
         position: relative;
         display: flex;
         flex-flow: row;
@@ -306,6 +345,10 @@ button, .close-add-income, .close-add, .removeExp, .btn {
         letter-spacing: 2px;
         background-color: #7F3DFF;
         border-radius: 20px;
+
+        &.active {
+            display: none;
+        }
 
         p {
             margin: 0;
@@ -343,12 +386,12 @@ button, .close-add-income, .close-add, .removeExp, .btn {
     left: 0px;
     bottom: 0;
     width: 100%;
+
     .bottom-nav {
         width: 91%;
         height: 56px;
         background-color: rgb(249, 249, 249);
-        border-radius: 100px;
-        border: rgb(189, 189, 189) 3px solid;
+        border-radius: 10px;
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -362,7 +405,7 @@ button, .close-add-income, .close-add, .removeExp, .btn {
             align-items: center;
             justify-content: center;
             background-color: #b1b1b1;
-            border-radius: 100px;
+            border-radius: 10px;
             font-size: 13px;
             color: #fff;
     
@@ -381,3 +424,20 @@ button, .close-add-income, .close-add, .removeExp, .btn {
     }
 }
 
+.fixed {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    padding: 20px;
+    z-index: 999;
+    background-color: #e4e4e4;
+    transition: all 0.3s;
+
+    &.expense {
+        background-color: #FD3C4A;
+    }
+
+    &.income {
+        background-color: #00A86B;
+    }
+}
