@@ -7,7 +7,7 @@ $(document).ready(function() {
         var desc = str.replace(/[0-9]/g, '');
         var numb = txt.match(/\d/g);
         var numb = numb.join("");
-        $('.datas').append('<div class="render">' + desc + '<p>₱ ' + numb + ' </p> <span class="removeExp" data-id="'+desc+'"><i class="fa-solid fa-x"></i></span> </div>');
+        $('.datas').append('<div class="render">' + desc + '<p>₱ ' + numb + ' </p> <span class="removeExp" data-id="'+desc+'">x</span> </div>');
         $('.renderTotalExp').append('<p class="price '+desc+'" data-num="'+ numb +'">'+ numb +'</p>');
         var $numbers = $('.renderTotalExp p');
         var sum = 0;
@@ -20,28 +20,6 @@ $(document).ready(function() {
         $('.expense-container .dataExpense').text('₱ ' + incomeSubTotal);
         $('#total').text('YOUR TOTAL EXPENSE IS: ₱ ' + incomeSubTotal);
     }
-
-    // remove functions 
-    setInterval(function () {
-        $('.removeExp').on('click', (e) => {
-            var $this = $(e.currentTarget);
-            var value = $this.data('id');
-            var exp = $this.parent().children().text();
-            var numbExp = exp.match(/\d/g);
-            var numbExp = numbExp.join("");
-            var subTotal = $('#total').text();
-            var numbTotal = subTotal.match(/\d/g);
-            var numbTotal = numbTotal.join("");
-            var total = parseInt(numbTotal) - parseInt(numbExp); 
-    
-            $this.parent().addClass('removed');
-            setTimeout(function(){
-                $this.parent().addClass('up');
-            }, 500);
-            $('.' + value ).remove();
-            window.localStorage.removeItem(value);
-        });
-    },);
 
     //bottom nav functions
     $('.bottom-nav .expense.btn , .close-add').on('click' , (e) => {
@@ -88,23 +66,25 @@ $(document).ready(function() {
 
     $.fn.filter = function() {
         var words = $('.desc').val();
-        var str = $('.render').text();
-        var x = str.replace(/[0-9, x ,₱]/g, ' ');
+        var str = $('.price').text();
+        var x = str.replace(/[0-9, x,₱]/g, ' ');
         // var result = x.match(wordss);
 
         if(x.match(words)) {
             // $('.input-data .warning').slideDown();
             status = true;
+            console.log('warning');
         }else{
             // $('.input-data .warning').slideUp();
             status = false;
+            console.log('no warning');
         }
-        
+
     }
 
     setInterval(function () {
-        $.fn.filter();  
-    },);
+        $.fn.filter();         
+    }, 2000);
 
     $('.addBtn').on('click', (e) => {
         var value = $('.value').val();
@@ -113,7 +93,7 @@ $(document).ready(function() {
         var subTotal = $('#total').text();
         var numb = subTotal.match(/\d/g);
         var numb = numb.join("");
-        var total = parseInt(numb) + parseInt(value);
+        var total = parseInt(numb) + parseInt(value); 
 
         if(status === true){
             $('.warning').text('This word is already used!');
@@ -122,7 +102,7 @@ $(document).ready(function() {
             $('.warning').text('');
             $('.desc').val('');
             $('.value').val('');
-            $('.datas').append('<div class="render">' + desc + '<p> ₱' + value + ' </p> <span class="removeExp" data-id="'+desc+'"><i class="fa-solid fa-x"></i></span> </div>');
+            $('.datas').append('<div class="render">' + desc + '<p> ₱' + value + ' </p> <span class="removeExp" data-id="'+desc+'">x</span> </div>');
 
             var $numbers = $('.renderTotalExp p');
             var sum = 0;
@@ -157,6 +137,29 @@ $(document).ready(function() {
             }, 1000);
         }
     });
+
+    // remove functions 
+    setInterval(function () {
+        $('.removeExp').on('click', (e) => {
+            var $this = $(e.currentTarget);
+            var value = $this.data('id');
+            var exp = $this.parent().children().text();
+            var numbExp = exp.match(/\d/g);
+            var numbExp = numbExp.join("");
+            var subTotal = $('#total').text();
+            var numbTotal = subTotal.match(/\d/g);
+            var numbTotal = numbTotal.join("");
+            var total = parseInt(numbTotal) - parseInt(numbExp); 
+    
+            $this.parent().addClass('removed');
+            setTimeout(function(){
+                $this.parent().addClass('up');
+            }, 500);
+            console.log(value);
+            $('.' + value ).remove();
+            window.localStorage.removeItem(value);
+        });
+    },);
 
     $('.addBtn-income').on('click', (e) => {
         var value = $('.input-data-income .value-input').val();
@@ -212,12 +215,13 @@ $(document).ready(function() {
     //summary function 
     $('.summary.view').on('click', (e)=> {
         $('.datas').toggleClass('active');
+        $('.account-balance').toggleClass('active');
         
         if ($('.datas').hasClass('active')) {
-            $('.render').slideUp();
+            $('.render').hide(500);
             $('.btn.summary').html('<i class="fa-solid fa-xmark"></i> Close');
         } else {
-            $('.render').slideDown();
+            $('.render').show(500);
             $('.btn.summary').html('<i class="fa-solid fa-receipt"></i> Summary');
         }
     });

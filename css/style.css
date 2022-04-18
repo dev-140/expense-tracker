@@ -22,7 +22,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #e4e4e4;
+  background-color: #fff;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -96,8 +96,19 @@ button, .close-add-income, .close-add, .removeExp, .btn {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background: #49d1d1;
+  background: #7F3DFF;
   position: relative;
+  -webkit-transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
+}
+
+.account-balance.active {
+  box-shadow: 11px 12px 26px -8px black;
+  -webkit-box-shadow: 11px 12px 26px -8px black;
+  -moz-box-shadow: 11px 12px 26px -8px black;
+  margin-bottom: 20px;
+  -webkit-transform: scale(1.01);
+          transform: scale(1.01);
 }
 
 .account-balance .minus-animation {
@@ -157,11 +168,13 @@ button, .close-add-income, .close-add, .removeExp, .btn {
   font-weight: bolder;
   -webkit-transition: all .3s;
   transition: all .3s;
+  color: #fff;
+  letter-spacing: 1px;
 }
 
 .account-balance .text.active {
   background-color: transparent;
-  color: #000;
+  color: #fff;
 }
 
 .account-balance .total-bal {
@@ -169,11 +182,12 @@ button, .close-add-income, .close-add, .removeExp, .btn {
   margin-top: 0px;
   text-align: center;
   font-weight: bolder;
+  color: #fff !important;
 }
 
 .account-balance .total-bal.active {
   background-color: transparent;
-  color: #000 !important;
+  color: #fff !important;
 }
 
 .header .heading {
@@ -441,6 +455,8 @@ button, .close-add-income, .close-add, .removeExp, .btn {
   max-height: 317px;
   padding-top: 10px;
   margin-bottom: 10px;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 .datas.active {
@@ -474,13 +490,12 @@ button, .close-add-income, .close-add, .removeExp, .btn {
   letter-spacing: 2px;
   background-color: #7F3DFF;
   border-radius: 20px;
-  -webkit-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 .datas .render.removed {
   text-decoration: line-through;
-  background-color: #FD3C4A;
   margin-left: 100vh;
 }
 
@@ -496,6 +511,14 @@ button, .close-add-income, .close-add, .removeExp, .btn {
 .datas .render .removeExp {
   position: absolute;
   right: 10px;
+  background-color: #FD3C4A;
+  border-radius: 100px;
+  padding: 6px 12px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .total {
@@ -584,37 +607,6 @@ button, .close-add-income, .close-add, .removeExp, .btn {
   left: 0;
   padding: 20px;
   z-index: 999;
-  background-color: #e4e4e4;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.fixed.expense {
-  background-color: #FD3C4A;
-}
-
-.fixed.income {
-  background-color: #00A86B;
-}
-
-.fa-x {
-  background-color: #FD3C4A;
-  border-radius: 100px;
-  padding: 10px;
-  font-size: 10px;
-}
-
-.fa-x::before {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  text-align: center;
 }
 
 .fa-plus {

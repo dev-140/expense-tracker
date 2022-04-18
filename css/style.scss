@@ -14,7 +14,7 @@ body {
     display: flex;
     flex-flow: column;
     align-items: center;
-    background-color: #e4e4e4;
+    background-color: #fff;
     justify-content: center;
     overflow-y: hidden;
 }
@@ -73,8 +73,17 @@ border: 0px solid #ffffff;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    background: rgb(73, 209, 209);
+    background: #7F3DFF;
     position: relative;
+    transition: all 0.4s ease-in;
+
+    &.active {
+        box-shadow: 11px 12px 26px -8px rgba(0,0,0,1);
+        -webkit-box-shadow: 11px 12px 26px -8px rgba(0,0,0,1);
+        -moz-box-shadow: 11px 12px 26px -8px rgba(0,0,0,1);
+        margin-bottom: 20px;
+        transform: scale(1.01);
+    }
 
     .minus-animation {
         position: absolute;
@@ -127,10 +136,12 @@ border: 0px solid #ffffff;
         margin-top: 0px;
         font-weight: bolder;
         transition: all .3s;
+        color: #fff;
+        letter-spacing: 1px;
 
         &.active {
             background-color: transparent;
-            color: #000;
+            color: #fff;
         }
     }
 
@@ -139,10 +150,11 @@ border: 0px solid #ffffff;
         margin-top: 0px;
         text-align: center;
         font-weight: bolder;
+        color: #fff !important;
 
         &.active {
             background-color: transparent;
-            color: #000 !important;
+            color: #fff !important;
         }
     }
 }
@@ -365,6 +377,7 @@ border: 0px solid #ffffff;
     max-height: 317px;
     padding-top: 10px;
     margin-bottom: 10px;
+    transition: all 1s ease-in-out;
 
     &.active {
         opacity: 0;
@@ -388,11 +401,10 @@ border: 0px solid #ffffff;
         letter-spacing: 2px;
         background-color: #7F3DFF;
         border-radius: 20px;
-        transition: all .5s ease-in-out;
+        transition: all 1s ease-in-out;
 
         &.removed {
             text-decoration: line-through;
-            background-color: #FD3C4A;
             margin-left: 100vh;
         }
 
@@ -408,6 +420,12 @@ border: 0px solid #ffffff;
         .removeExp {
             position: absolute;
             right: 10px;
+            background-color: #FD3C4A;
+            border-radius: 100px;
+            padding: 6px 12px;
+            height: fit-content;
+            font-size: 14px;
+            font-weight: bold;
         }
     }
 }
@@ -481,33 +499,9 @@ border: 0px solid #ffffff;
     left: 0;
     padding: 20px;
     z-index: 999;
-    background-color: #e4e4e4;
-    transition: all 0.3s;
-
-    &.expense {
-        background-color: #FD3C4A;
-    }
-
-    &.income {
-        background-color: #00A86B;
-    }
 }
 
 //icons
-
-.fa-x {
-    background-color: #FD3C4A;
-    border-radius: 100px;
-    padding: 10px;
-    font-size: 10px;
-
-    &::before {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-}
 
 .fa-plus {
     margin-right: 5px;
