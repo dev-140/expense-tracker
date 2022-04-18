@@ -35,7 +35,10 @@ $(document).ready(function() {
             var total = parseInt(numbTotal) - parseInt(numbExp); 
     
             $this.parent().addClass('removed');
-            $this.remove();
+            setTimeout(function(){
+                $this.parent().addClass('up');
+            }, 500);
+            $('.' + value ).remove();
             window.localStorage.removeItem(value);
         });
     },);
