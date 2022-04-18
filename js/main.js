@@ -8,7 +8,7 @@ $(document).ready(function() {
         var numb = txt.match(/\d/g);
         var numb = numb.join("");
         $('.datas').append('<div class="render">' + desc + '<p>₱ ' + numb + ' </p> <span class="removeExp" data-id="'+desc+'">x</span> </div>');
-        $('.renderTotalExp').append('<p class="price '+desc+'" data-num="'+ numb +'">'+ numb +'</p>');
+        $('.renderTotalExp').append('<p class="price '+desc+'" data-num="'+ numb +'"data-d="'+ desc +'">'+ numb +'</p>');
         var $numbers = $('.renderTotalExp p');
         var sum = 0;
         var income = window.localStorage.getItem('income');
@@ -66,7 +66,7 @@ $(document).ready(function() {
 
     $.fn.filter = function() {
         var words = $('.desc').val();
-        var str = $('.price').text();
+        var str = $('.datas .render').text();
         var x = str.replace(/[0-9, x,₱]/g, ' ');
         // var result = x.match(wordss);
 
@@ -82,7 +82,7 @@ $(document).ready(function() {
 
     setInterval(function () {
         $.fn.filter();         
-    }, 2000);
+    },);
 
     $('.addBtn').on('click', (e) => {
         var value = $('.value').val();
@@ -113,7 +113,7 @@ $(document).ready(function() {
             var incomeTotal = parseInt(income) - parseInt(sum);
             var expTotal = sum;
             
-            $('.renderTotalExp').append('<p class="price '+desc+'" data-num="'+ value +'">'+ value +'</p>');
+            $('.renderTotalExp').append('<p class="price '+desc+'" data-num="'+ value +'"data-d="'+desc+'">'+ value +'</p>');
             $('.income-container .dataIncome').text('₱ ' + incomeTotal);
 
             setTimeout(function() {
@@ -152,6 +152,7 @@ $(document).ready(function() {
             $this.parent().addClass('removed');
             setTimeout(function(){
                 $this.parent().addClass('up');
+                $this.parent().remove();
             }, 500);
             $('.' + value ).remove();
             window.localStorage.removeItem(value);
