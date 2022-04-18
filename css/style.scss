@@ -64,7 +64,7 @@ border: 0px solid #ffffff;
 }
 
 .account-balance {
-    border-radius: 20px;
+    // border-radius: 20px;
     width: 100%;
     min-height: 100px;
     padding-top: 30px;
@@ -177,7 +177,7 @@ border: 0px solid #ffffff;
             align-items: center;
             justify-content: center;
             width: 49%;
-            border-radius: 20px;
+            // border-radius: 20px;
             background-color: #00A86B;
             transition: all .3s;
 
@@ -204,7 +204,7 @@ border: 0px solid #ffffff;
             align-items: center;
             justify-content: center;
             width: 49%;
-            border-radius: 20px;
+            // border-radius: 20px;
             background-color: #FD3C4A;
             transition: all .3s;
 
@@ -372,7 +372,7 @@ border: 0px solid #ffffff;
     overflow-y: scroll;
     overflow-x: hidden;
     scroll-snap-type: y mandatory;
-    margin-top: 300px;
+    margin-top: 272px;
     transition: all 0.3s;
     max-height: 317px;
     padding-top: 10px;
@@ -400,7 +400,7 @@ border: 0px solid #ffffff;
         font-weight: bolder;
         letter-spacing: 2px;
         background-color: #7F3DFF;
-        border-radius: 20px;
+        // border-radius: 20px;
         transition: all 1s ease-in-out;
 
         &.removed {
@@ -434,7 +434,7 @@ border: 0px solid #ffffff;
     background-color: rgba(255, 0, 0, 0.2); 
     color: red;
     padding: 10px 0;
-    border-radius: 20px;
+    // border-radius: 20px;
     text-align: center;
     margin-top: 0;
 
@@ -489,6 +489,49 @@ border: 0px solid #ffffff;
             &.summary {
                 background-color: #0077FF;
             }
+        }
+    }
+}
+
+//summary 
+.data-summary {
+    width: 100%;
+    background-color: #FD3C4A;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 0;
+    display: none;
+
+    &.active{
+        display: flex;
+    }
+
+    .text {
+        margin-top: 0;
+        text-align: center;
+        color: #ffffff;
+        font-weight: bold;
+        letter-spacing: 2px;
+        border-bottom: 2px #ffffff solid;
+        width: fit-content;
+        padding-bottom: 2px;
+        margin-bottom: 15px;
+    }
+
+    .expense-percent {
+        width: 90%;
+        height: 30px;
+        background-color: #00A86B;
+        border: solid 4px #ffffff;
+        border-radius: 100px;
+        overflow: hidden;
+
+        .percent {
+            transition: all 1s ease-in;
+            height: 100%;
+            width: 0%;
+            background-color: #FD3C4A;
         }
     }
 }

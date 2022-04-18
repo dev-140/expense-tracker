@@ -80,7 +80,6 @@ button, .close-add-income, .close-add, .removeExp, .btn {
 }
 
 .account-balance {
-  border-radius: 20px;
   width: 100%;
   min-height: 100px;
   padding-top: 30px;
@@ -224,7 +223,6 @@ button, .close-add-income, .close-add, .removeExp, .btn {
       -ms-flex-pack: center;
           justify-content: center;
   width: 49%;
-  border-radius: 20px;
   background-color: #00A86B;
   -webkit-transition: all .3s;
   transition: all .3s;
@@ -261,7 +259,6 @@ button, .close-add-income, .close-add, .removeExp, .btn {
       -ms-flex-pack: center;
           justify-content: center;
   width: 49%;
-  border-radius: 20px;
   background-color: #FD3C4A;
   -webkit-transition: all .3s;
   transition: all .3s;
@@ -449,7 +446,7 @@ button, .close-add-income, .close-add, .removeExp, .btn {
   overflow-x: hidden;
   -ms-scroll-snap-type: y mandatory;
       scroll-snap-type: y mandatory;
-  margin-top: 300px;
+  margin-top: 272px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   max-height: 317px;
@@ -489,7 +486,6 @@ button, .close-add-income, .close-add, .removeExp, .btn {
   font-weight: bolder;
   letter-spacing: 2px;
   background-color: #7F3DFF;
-  border-radius: 20px;
   -webkit-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
 }
@@ -525,7 +521,6 @@ button, .close-add-income, .close-add, .removeExp, .btn {
   background-color: rgba(255, 0, 0, 0.2);
   color: red;
   padding: 10px 0;
-  border-radius: 20px;
   text-align: center;
   margin-top: 0;
 }
@@ -599,6 +594,60 @@ button, .close-add-income, .close-add, .removeExp, .btn {
 
 .bottom-nav-container .bottom-nav .btn.summary {
   background-color: #0077FF;
+}
+
+.data-summary {
+  width: 100%;
+  background-color: #FD3C4A;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px 0;
+  display: none;
+}
+
+.data-summary.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.data-summary .text {
+  margin-top: 0;
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border-bottom: 2px #ffffff solid;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding-bottom: 2px;
+  margin-bottom: 15px;
+}
+
+.data-summary .expense-percent {
+  width: 90%;
+  height: 30px;
+  background-color: #00A86B;
+  border: solid 4px #ffffff;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.data-summary .expense-percent .percent {
+  -webkit-transition: all 1s ease-in;
+  transition: all 1s ease-in;
+  height: 100%;
+  width: 0%;
+  background-color: #FD3C4A;
 }
 
 .fixed {

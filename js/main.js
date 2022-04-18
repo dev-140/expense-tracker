@@ -73,11 +73,9 @@ $(document).ready(function() {
         if(x.match(words)) {
             // $('.input-data .warning').slideDown();
             status = true;
-            console.log('warning');
         }else{
             // $('.input-data .warning').slideUp();
             status = false;
-            console.log('no warning');
         }
 
     }
@@ -155,7 +153,6 @@ $(document).ready(function() {
             setTimeout(function(){
                 $this.parent().addClass('up');
             }, 500);
-            console.log(value);
             $('.' + value ).remove();
             window.localStorage.removeItem(value);
         });
@@ -214,19 +211,32 @@ $(document).ready(function() {
 
     //summary function 
     $('.summary.view').on('click', (e)=> {
+        var Xpense = $('.dataExpense').text();
+        var Income = $('.dataIncome').text();
+        var totalXpense = Xpense.match(/\d/g);
+        totalXpense = totalXpense.join("");
+        var totalIncome = Income.match(/\d/g);
+        totalIncome = totalIncome.join("");
+        const result = Math.round((parseInt(totalXpense) / parseInt(totalIncome)) * 100)
+        
         $('.datas').toggleClass('active');
         $('.account-balance').toggleClass('active');
         
         if ($('.datas').hasClass('active')) {
             $('.render').hide(500);
+            setTimeout(function(){
+                $('.percent').css('width', result + 'px');
+            }, 500);
             $('.btn.summary').html('<i class="fa-solid fa-xmark"></i> Close');
+            $('.data-summary').addClass('active');
         } else {
             $('.render').show(500);
+            $('.percent').css('width', 0 + 'px');
             $('.btn.summary').html('<i class="fa-solid fa-receipt"></i> Summary');
+            $('.data-summary').removeClass('active');
         }
     });
 
-    //detects overflow
 });
 
 // setInterval(function () {
