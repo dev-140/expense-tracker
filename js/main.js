@@ -7,7 +7,7 @@ $(document).ready(function() {
         var desc = str.replace(/[0-9]/g, '');
         var numb = txt.match(/\d/g);
         var numb = numb.join("");
-        $('.datas').append('<div class="render">' + desc + '<p>₱ ' + numb + ' </p> <span class="removeExp" data-id="'+desc+'">x</span> </div>');
+        $('.datas').append('<div class="render">' + desc + '<p>₱ ' + numb + ' </p> <span class="removeExp" data-id="'+desc+'"><i class="fa-solid fa-x"></i></span> </div>');
         $('.renderTotalExp').append('<p class="price '+desc+'" data-num="'+ numb +'">'+ numb +'</p>');
         var $numbers = $('.renderTotalExp p');
         var sum = 0;
@@ -17,7 +17,6 @@ $(document).ready(function() {
         });
         var incomeSubTotal = parseInt(income) - parseInt(income) - parseInt(income) + parseInt(sum);
 
-        console.log(incomeSubTotal);
         $('.expense-container .dataExpense').text('₱ ' + incomeSubTotal);
         $('#total').text('YOUR TOTAL EXPENSE IS: ₱ ' + incomeSubTotal);
     }
@@ -35,11 +34,8 @@ $(document).ready(function() {
             var numbTotal = numbTotal.join("");
             var total = parseInt(numbTotal) - parseInt(numbExp); 
     
-            $this.parent().remove();
-            $('.' + value ).remove();
-            // setInterval(function () {
-            //     $('#total').text('YOUR TOTAL EXPENSE IS: ₱ ' + total);
-            // },);
+            $this.parent().addClass('removed');
+            $this.remove();
             window.localStorage.removeItem(value);
         });
     },);
@@ -91,14 +87,13 @@ $(document).ready(function() {
         var words = $('.desc').val();
         var str = $('.render').text();
         var x = str.replace(/[0-9, x ,₱]/g, ' ');
-        $('.input-data .warning').text('Add data or This word is already used!');
         // var result = x.match(wordss);
 
         if(x.match(words)) {
-            $('.input-data .warning').slideDown();
+            // $('.input-data .warning').slideDown();
             status = true;
         }else{
-            $('.input-data .warning').slideUp();
+            // $('.input-data .warning').slideUp();
             status = false;
         }
         
@@ -118,13 +113,13 @@ $(document).ready(function() {
         var total = parseInt(numb) + parseInt(value);
 
         if(status === true){
-            console.log('change the word')
+            $('.warning').text('This word is already used!');
         }else{
             localStorage.setItem(desc,renderText);
-        
+            $('.warning').text('');
             $('.desc').val('');
             $('.value').val('');
-            $('.datas').append('<div class="render">' + desc + '<p> ₱' + value + ' </p> <span class="removeExp" data-id="'+desc+'">x</span> </div>');
+            $('.datas').append('<div class="render">' + desc + '<p> ₱' + value + ' </p> <span class="removeExp" data-id="'+desc+'"><i class="fa-solid fa-x"></i></span> </div>');
 
             var $numbers = $('.renderTotalExp p');
             var sum = 0;
@@ -137,10 +132,6 @@ $(document).ready(function() {
             var incomeTotal = parseInt(income) - parseInt(sum);
             var expTotal = sum;
             
-            console.log(incomeSubTotal);
-            console.log(incomeTotal);
-            console.log(expTotal);
-
             $('.renderTotalExp').append('<p class="price '+desc+'" data-num="'+ value +'">'+ value +'</p>');
             $('.income-container .dataIncome').text('₱ ' + incomeTotal);
 
@@ -155,7 +146,13 @@ $(document).ready(function() {
                 $('.expense-container .dataExpense').text('₱ ' + sum);
                 $('#total').text('YOUR TOTAL EXPENSE IS: ₱ ' + sum);
             }, 1);
-        } 
+
+            $('.minus-animation').text('-' + value);
+            $('.minus-animation').addClass('active');
+            setTimeout(function() { 
+                $('.minus-animation').removeClass('active');
+            }, 1000);
+        }
     });
 
     $('.addBtn-income').on('click', (e) => {
@@ -209,18 +206,20 @@ $(document).ready(function() {
         }
     },);
 
-    //summsry function 
+    //summary function 
     $('.summary.view').on('click', (e)=> {
         $('.datas').toggleClass('active');
         
         if ($('.datas').hasClass('active')) {
-                $('.render').slideUp();
-            console.log('up');
+            $('.render').slideUp();
+            $('.btn.summary').html('<i class="fa-solid fa-xmark"></i> Close');
         } else {
             $('.render').slideDown();
-            console.log('down');
+            $('.btn.summary').html('<i class="fa-solid fa-receipt"></i> Summary');
         }
     });
+
+    //detects overflow
 });
 
 // setInterval(function () {

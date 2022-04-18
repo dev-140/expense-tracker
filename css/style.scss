@@ -73,7 +73,49 @@ border: 0px solid #ffffff;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    background: linear-gradient(183.33deg, #FFF6E6 9.56%, rgba(248, 237, 216, 0) 124.27%);
+    background: rgb(73, 209, 209);
+    position: relative;
+
+    .minus-animation {
+        position: absolute;
+        right: 50px;
+        z-index: 9;
+        padding: 0 10px;
+        background-color: #FD3C4A;
+        border-radius: 10px;
+        height: fit-content;
+        transition: all 1s ease-in-out;
+        opacity: 0;
+
+        &.active {
+            -webkit-animation: slide-top 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
+            animation: slide-top 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
+        }
+
+        @-webkit-keyframes slide-top {
+            0% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+                opacity: 100;
+            }
+            100% {
+                -webkit-transform: translateY(-100px);
+                transform: translateY(-100px);
+            }
+        }
+        @keyframes slide-top {
+            0% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+                opacity: 100;
+            }
+            100% {
+                -webkit-transform: translateY(-100px);
+                transform: translateY(-100px);
+            }
+        }
+  
+    }
 
     .text {
         font-size: 26px;
@@ -319,7 +361,7 @@ border: 0px solid #ffffff;
     scroll-snap-type: y mandatory;
     margin-top: 300px;
     transition: all 0.3s;
-    max-height: 300px;
+    max-height: 317px;
     padding-top: 10px;
     margin-bottom: 10px;
 
@@ -346,8 +388,10 @@ border: 0px solid #ffffff;
         background-color: #7F3DFF;
         border-radius: 20px;
 
-        &.active {
-            display: none;
+        &.removed {
+            text-decoration: line-through;
+            background-color: #FD3C4A;
+            margin-right: -10px;
         }
 
         p {
@@ -440,4 +484,41 @@ border: 0px solid #ffffff;
     &.income {
         background-color: #00A86B;
     }
+}
+
+//icons
+
+.fa-x {
+    background-color: #FD3C4A;
+    border-radius: 100px;
+    padding: 10px;
+    font-size: 10px;
+
+    &::before {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+.fa-plus {
+    margin-right: 5px;
+    margin-top: -1px;
+}
+
+.fa-arrow-right {
+    margin-left: 2px;
+}
+
+.aBtn {
+    letter-spacing: 2px;
+}
+
+.fa-receipt {
+    margin-right: 4px;
+}
+
+.fa-xmark {
+    margin-right: 4px;
 }

@@ -96,7 +96,52 @@ button, .close-add-income, .close-add, .removeExp, .btn {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background: linear-gradient(183.33deg, #FFF6E6 9.56%, rgba(248, 237, 216, 0) 124.27%);
+  background: #49d1d1;
+  position: relative;
+}
+
+.account-balance .minus-animation {
+  position: absolute;
+  right: 50px;
+  z-index: 9;
+  padding: 0 10px;
+  background-color: #FD3C4A;
+  border-radius: 10px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  opacity: 0;
+}
+
+.account-balance .minus-animation.active {
+  -webkit-animation: slide-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: slide-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@-webkit-keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 100;
+  }
+  100% {
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
+  }
+}
+
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 100;
+  }
+  100% {
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
+  }
 }
 
 .account-balance .text {
@@ -392,7 +437,7 @@ button, .close-add-income, .close-add, .removeExp, .btn {
   margin-top: 300px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  max-height: 300px;
+  max-height: 317px;
   padding-top: 10px;
   margin-bottom: 10px;
 }
@@ -430,8 +475,10 @@ button, .close-add-income, .close-add, .removeExp, .btn {
   border-radius: 20px;
 }
 
-.datas .render.active {
-  display: none;
+.datas .render.removed {
+  text-decoration: line-through;
+  background-color: #FD3C4A;
+  margin-right: -10px;
 }
 
 .datas .render p {
@@ -540,5 +587,46 @@ button, .close-add-income, .close-add, .removeExp, .btn {
 
 .fixed.income {
   background-color: #00A86B;
+}
+
+.fa-x {
+  background-color: #FD3C4A;
+  border-radius: 100px;
+  padding: 10px;
+  font-size: 10px;
+}
+
+.fa-x::before {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.fa-plus {
+  margin-right: 5px;
+  margin-top: -1px;
+}
+
+.fa-arrow-right {
+  margin-left: 2px;
+}
+
+.aBtn {
+  letter-spacing: 2px;
+}
+
+.fa-receipt {
+  margin-right: 4px;
+}
+
+.fa-xmark {
+  margin-right: 4px;
 }
 /*# sourceMappingURL=style.css.map */
