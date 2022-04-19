@@ -16,7 +16,6 @@ body {
     align-items: center;
     background-color: #fff;
     justify-content: center;
-    overflow-y: hidden;
 }
 
 button, .close-add-income, .close-add, .removeExp, .btn {
@@ -488,6 +487,11 @@ border: 0px solid #ffffff;
     
             &.summary {
                 background-color: #0077FF;
+
+                &.active {
+                    width: 90%;
+                    position: absolute;
+                }
             }
         }
     }
@@ -496,12 +500,32 @@ border: 0px solid #ffffff;
 //summary 
 .data-summary {
     width: 100%;
-    background-color: #FD3C4A;
+    background-color: #404040;
     display: flex;
     align-items: center;
     flex-direction: column;
     padding: 20px 0;
     display: none;
+
+    &.percent-data {
+        margin-top: 10px;
+        background-color: #1861b5;
+
+        .data {
+            font-size: 30px;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #fff;
+            border: solid 5px #FD3C4A;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 70px;
+            padding: 10px;
+            border-radius: 100px;
+        }
+    }
 
     &.active{
         display: flex;
@@ -542,6 +566,10 @@ border: 0px solid #ffffff;
     left: 0;
     padding: 20px;
     z-index: 999;
+
+    &.active {
+        background-color: #fff;
+    }
 }
 
 //icons
