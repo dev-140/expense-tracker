@@ -26,7 +26,6 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  overflow-y: hidden;
 }
 
 button, .close-add-income, .close-add, .removeExp, .btn {
@@ -596,9 +595,14 @@ button, .close-add-income, .close-add, .removeExp, .btn {
   background-color: #0077FF;
 }
 
+.bottom-nav-container .bottom-nav .btn.summary.active {
+  width: 90%;
+  position: absolute;
+}
+
 .data-summary {
   width: 100%;
-  background-color: #FD3C4A;
+  background-color: #404040;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -611,6 +615,32 @@ button, .close-add-income, .close-add, .removeExp, .btn {
           flex-direction: column;
   padding: 20px 0;
   display: none;
+}
+
+.data-summary.percent-data {
+  margin-top: 10px;
+  background-color: #1861b5;
+}
+
+.data-summary.percent-data .data {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #fff;
+  border: solid 5px #FD3C4A;
+  height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 70px;
+  padding: 10px;
+  border-radius: 100px;
 }
 
 .data-summary.active {
@@ -656,6 +686,10 @@ button, .close-add-income, .close-add, .removeExp, .btn {
   left: 0;
   padding: 20px;
   z-index: 999;
+}
+
+.fixed.active {
+  background-color: #fff;
 }
 
 .fa-plus {

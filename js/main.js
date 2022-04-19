@@ -222,6 +222,8 @@ $(document).ready(function() {
         
         $('.datas').toggleClass('active');
         $('.account-balance').toggleClass('active');
+        $('.summary').toggleClass('active');
+        $('.fixed').toggleClass('active');
         
         if ($('.datas').hasClass('active')) {
             $('.render').hide(500);
@@ -236,6 +238,19 @@ $(document).ready(function() {
             $('.btn.summary').html('<i class="fa-solid fa-receipt"></i> Summary');
             $('.data-summary').removeClass('active');
         }
+
+        $({ countNum: 0 }).animate({ countNum: result }, {
+            duration: 1000, // tune the speed here
+            easing: 'linear',
+            step: function() {
+                var num = this.countNum;
+                var numTruncated = parseFloat(num).toFixed();
+              $('.percent-data .data').text(numTruncated + '%');
+            },
+            complete: function() {
+                console.log(result);
+            }
+        });
     });
 
 });
