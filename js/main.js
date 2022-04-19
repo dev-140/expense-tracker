@@ -226,13 +226,13 @@ $(document).ready(function() {
         if ($('.datas').hasClass('active')) {
             $('.render').hide(500);
             setTimeout(function(){
-                $('.percent').css('width', result + 'px');
+                $('.percent').css('width', result + '%');
             }, 500);
             $('.btn.summary').html('<i class="fa-solid fa-xmark"></i> Close');
             $('.data-summary').addClass('active');
         } else {
             $('.render').show(500);
-            $('.percent').css('width', 0 + 'px');
+            $('.percent').css('width', 0 + '%');
             $('.btn.summary').html('<i class="fa-solid fa-receipt"></i> Summary');
             $('.data-summary').removeClass('active');
         }
