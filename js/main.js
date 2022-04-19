@@ -237,7 +237,6 @@ $(document).ready(function() {
             $('.data-summary').removeClass('active');
         }
     });
-
 });
 
 // setInterval(function () {
