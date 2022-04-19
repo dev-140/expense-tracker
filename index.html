@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f12e1741fd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
 </head>
 <body>
 
@@ -49,9 +50,18 @@
             </div>
         </div>
 
-        <div class="data-summary percent-data">
-            <p class="text">Your expense is</p>
-            <p class="data">61%</p>
+        <div class="hide-container opacity">
+            <div class="carS">
+                <div class="data-summary-slick percent-data">
+                    <p class="text">Your expense is</p>
+                    <p class="data"></p>
+                </div>
+        
+                <div class="data-summary-slick acount-bal">
+                    <p class="text">Total balance</p>
+                    <p class="data"></p>
+                </div>
+            </div>
         </div>
         
         <div class="renderTotalExp"></div>
@@ -84,6 +94,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script src="/js/main.js"></script>
 </body>
 </html>
