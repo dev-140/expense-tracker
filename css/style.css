@@ -600,12 +600,84 @@ button, .close-add-income, .close-add, .removeExp, .btn {
   position: absolute;
 }
 
-.data-summary {
-  width: 100%;
-  background-color: #404040;
+.hide-container {
+  display: block;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+.hide-container.hide {
+  display: none;
+}
+
+.hide-container.opacity {
+  opacity: 0;
+}
+
+@media (min-width: 768px) {
+  .hide-container {
+    display: none !important;
+  }
+}
+
+.carS {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  margin-top: 20px;
+}
+
+.carS .data-summary-slick {
+  width: 90%;
+  margin: 0 10px;
+  padding: 10px;
+}
+
+.carS .data-summary-slick .text {
+  text-align: center;
+  color: #fff;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  margin-top: 0;
+}
+
+.carS .data-summary-slick.acount-bal {
+  background-color: #00A86B;
+}
+
+.carS .data-summary-slick.percent-data {
+  background-color: #FD3C4A;
+}
+
+.carS .data-summary-slick .data {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #fff;
+  border: solid 5px #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80px;
+  height: 80px;
+  padding: 10px;
+  border-radius: 100px;
+  margin: auto;
+}
+
+.data-summary {
+  width: 100%;
+  background-color: #0077ff;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -617,30 +689,8 @@ button, .close-add-income, .close-add, .removeExp, .btn {
   display: none;
 }
 
-.data-summary.percent-data {
-  margin-top: 10px;
-  background-color: #1861b5;
-}
-
-.data-summary.percent-data .data {
-  font-size: 30px;
-  font-weight: bold;
-  margin: 10px 0;
-  color: #fff;
-  border: solid 5px #FD3C4A;
-  height: 70px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 70px;
-  padding: 10px;
-  border-radius: 100px;
+.data-summary:last-child {
+  margin-left: 10px;
 }
 
 .data-summary.active {
@@ -668,7 +718,6 @@ button, .close-add-income, .close-add, .removeExp, .btn {
   height: 30px;
   background-color: #00A86B;
   border: solid 4px #ffffff;
-  border-radius: 100px;
   overflow: hidden;
 }
 
@@ -690,6 +739,16 @@ button, .close-add-income, .close-add, .removeExp, .btn {
 
 .fixed.active {
   background-color: #fff;
+}
+
+.slick-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
 }
 
 .fa-plus {

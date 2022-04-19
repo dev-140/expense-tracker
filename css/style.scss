@@ -498,33 +498,78 @@ border: 0px solid #ffffff;
 }
 
 //summary 
-.data-summary {
-    width: 100%;
-    background-color: #404040;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 20px 0;
-    display: none;
+.hide-container {
+    display: block;
+    transition: all 1s ease-in-out;
 
-    &.percent-data {
-        margin-top: 10px;
-        background-color: #1861b5;
+    &.hide {
+        display: none;
+    }
+
+    &.opacity {
+        opacity: 0;
+    }
+
+    @media (min-width: 768px) {
+        display: none !important;
+    }
+}
+
+.carS {
+    display: flex;
+    flex-flow: row;
+    margin-top: 20px;
+
+    .data-summary-slick {
+        width: 90%;
+        margin: 0 10px;
+        padding: 10px;
+
+
+        .text {
+            text-align: center;
+            color: #fff;
+            font-weight: bolder;
+            letter-spacing: 2px;
+            margin-top: 0;
+        }
+
+        &.acount-bal {
+            background-color: #00A86B;
+        }
+    
+        &.percent-data {
+            background-color: #FD3C4A;
+        }
 
         .data {
             font-size: 30px;
             font-weight: bold;
             margin: 10px 0;
             color: #fff;
-            border: solid 5px #FD3C4A;
-            height: 70px;
+            border: solid 5px #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 70px;
+            width: 80px;
+            height: 80px;
             padding: 10px;
             border-radius: 100px;
+            margin: auto;
         }
+    }
+}
+
+.data-summary {
+    width: 100%;
+    background-color: #0077ff;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 0;
+    display: none;
+
+    &:last-child {
+        margin-left: 10px;
     }
 
     &.active{
@@ -548,7 +593,6 @@ border: 0px solid #ffffff;
         height: 30px;
         background-color: #00A86B;
         border: solid 4px #ffffff;
-        border-radius: 100px;
         overflow: hidden;
 
         .percent {
@@ -570,6 +614,12 @@ border: 0px solid #ffffff;
     &.active {
         background-color: #fff;
     }
+}
+
+//slick container
+.slick-container {
+    display: flex;
+    flex-flow: row;
 }
 
 //icons
