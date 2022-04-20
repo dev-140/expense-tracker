@@ -74,15 +74,7 @@ border: 0px solid #ffffff;
     flex-direction: column;
     background: #7F3DFF;
     position: relative;
-    transition: all 0.4s ease-in;
-
-    &.active {
-        box-shadow: 11px 12px 26px -8px rgba(0,0,0,1);
-        -webkit-box-shadow: 11px 12px 26px -8px rgba(0,0,0,1);
-        -moz-box-shadow: 11px 12px 26px -8px rgba(0,0,0,1);
-        margin-bottom: 20px;
-        transform: scale(1.01);
-    }
+    transition: all 0.1s ease-in;
 
     .minus-animation {
         position: absolute;

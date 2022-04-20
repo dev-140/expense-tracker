@@ -213,8 +213,9 @@ $(document).ready(function() {
     //slick function
     $('.carS').slick({
         centerMode: true,
+        infinite: false,
         centerPadding: '60px',
-        slidesToShow: 3,
+        slidesToShow: 1,
         responsive: [
           {
             breakpoint: 768,
@@ -222,7 +223,7 @@ $(document).ready(function() {
               arrows: false,
               centerMode: true,
               centerPadding: '40px',
-              slidesToShow: 3
+              slidesToShow: 1
             }
           },
           {
@@ -291,7 +292,7 @@ $(document).ready(function() {
     setTimeout(function() {
         $('.hide-container').removeClass('opacity');
         $('.hide-container').addClass('hide');
-    }, 1);
+    }, 100);
 });
 
 // setInterval(function () {
