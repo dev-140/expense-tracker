@@ -96,17 +96,8 @@ button, .close-add-income, .close-add, .removeExp, .btn {
           flex-direction: column;
   background: #7F3DFF;
   position: relative;
-  -webkit-transition: all 0.4s ease-in;
-  transition: all 0.4s ease-in;
-}
-
-.account-balance.active {
-  box-shadow: 11px 12px 26px -8px black;
-  -webkit-box-shadow: 11px 12px 26px -8px black;
-  -moz-box-shadow: 11px 12px 26px -8px black;
-  margin-bottom: 20px;
-  -webkit-transform: scale(1.01);
-          transform: scale(1.01);
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
 }
 
 .account-balance .minus-animation {
@@ -279,7 +270,7 @@ button, .close-add-income, .close-add, .removeExp, .btn {
 }
 
 .input-data-income {
-  z-index: 9;
+  z-index: 99;
   -webkit-transition: all .3s;
   transition: all .3s;
   background-color: #fff;
@@ -358,7 +349,7 @@ button, .close-add-income, .close-add, .removeExp, .btn {
 }
 
 .input-data {
-  z-index: 9;
+  z-index: 999;
   -webkit-transition: all .3s;
   transition: all .3s;
   background-color: #fff;
@@ -499,6 +490,12 @@ button, .close-add-income, .close-add, .removeExp, .btn {
   margin-top: -10px;
 }
 
+.datas .render .data-desc {
+  width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .datas .render p {
   margin: 0;
 }
@@ -578,7 +575,6 @@ button, .close-add-income, .close-add, .removeExp, .btn {
       -ms-flex-pack: center;
           justify-content: center;
   background-color: #b1b1b1;
-  border-radius: 10px;
   font-size: 13px;
   color: #fff;
 }
@@ -654,7 +650,7 @@ button, .close-add-income, .close-add, .removeExp, .btn {
 }
 
 .carS .data-summary-slick .data {
-  font-size: 30px;
+  font-size: 26px;
   font-weight: bold;
   margin: 10px 0;
   color: #fff;

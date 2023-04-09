@@ -7,7 +7,7 @@ $(document).ready(function() {
         var desc = str.replace(/[0-9]/g, '');
         var numb = txt.match(/\d/g);
         var numb = numb.join("");
-        $('.datas').append('<div class="render">' + desc + '<p>₱ ' + numb + ' </p> <span class="removeExp" data-id="'+desc+'">x</span> </div>');
+        $('.datas').append('<div class="render" data-date="dateFormat><p class="data-desc">' + desc + '</p>' + '<p>₱ ' + numb + ' </p> <span class="removeExp" data-id="'+desc+'">x</span> </div>');
         $('.renderTotalExp').append('<p class="price '+desc+'" data-num="'+ numb +'"data-d="'+ desc +'">'+ numb +'</p>');
         var $numbers = $('.renderTotalExp p');
         var sum = 0;
@@ -85,9 +85,10 @@ $(document).ready(function() {
     },);
 
     $('.addBtn').on('click', (e) => {
+        var dateFormat = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
         var value = $('.value').val();
         var desc = $('.desc').val();
-        var renderText = desc + value; 
+        var renderText = desc + value;
         var subTotal = $('#total').text();
         var numb = subTotal.match(/\d/g);
         var numb = numb.join("");
@@ -100,7 +101,7 @@ $(document).ready(function() {
             $('.warning').text('');
             $('.desc').val('');
             $('.value').val('');
-            $('.datas').append('<div class="render">' + desc + '<p> ₱' + value + ' </p> <span class="removeExp" data-id="'+desc+'">x</span> </div>');
+            $('.datas').append('<div class="render" data-date="'+ dateFormat +'"><p class="data-desc">' + desc + '</p>' + '<p> ₱' + value + ' </p> <span class="removeExp" data-id="'+desc+'">x</span> </div>');
 
             var $numbers = $('.renderTotalExp p');
             var sum = 0;
@@ -209,36 +210,8 @@ $(document).ready(function() {
             $('.addBtn-income-disable').hide();
         }
     },);
-
-    //slick function
-    $('.carS').slick({
-        centerMode: true,
-        infinite: false,
-        centerPadding: '60px',
-        slidesToShow: 1,
-        responsive: [
-          {
-            breakpoint: 768,
-            settings: {
-              arrows: false,
-              centerMode: true,
-              centerPadding: '40px',
-              slidesToShow: 1
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              arrows: false,
-              centerMode: true,
-              centerPadding: '40px',
-              slidesToShow: 1
-            }
-          }
-        ]
-    });
-
-    //summary function 
+    
+    //summary function
     $('.summary.view').on('click', (e)=> {
         var Xpense = $('.dataExpense').text();
         var Income = $('.dataIncome').text();
@@ -287,6 +260,38 @@ $(document).ready(function() {
             }
         });
 
+        if ($('.summary.view').hasClass('active')) {
+            $('.carS').slick({
+                centerMode: true,
+                infinite: false,
+                centerPadding: '60px',
+                slidesToShow: 1,
+                responsive: [
+                  {
+                    breakpoint: 768,
+                    settings: {
+                      arrows: false,
+                      centerMode: true,
+                      centerPadding: '40px',
+                      slidesToShow: 1
+                    }
+                  },
+                  {
+                    breakpoint: 480,
+                    settings: {
+                      arrows: false,
+                      centerMode: true,
+                      centerPadding: '40px',
+                      slidesToShow: 1
+                    }
+                  }
+                ]
+            });
+        } else {
+            $('.carS').slick('unslick');
+        }
+        //slick function
+        
     });
 
     setTimeout(function() {

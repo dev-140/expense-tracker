@@ -218,7 +218,7 @@ border: 0px solid #ffffff;
 }
 
 .input-data-income {
-    z-index: 9;
+    z-index: 99;
     transition: all .3s;
     background-color: #fff;
     display: flex;
@@ -287,7 +287,7 @@ border: 0px solid #ffffff;
 }
 
 .input-data {
-    z-index: 9;
+    z-index: 999;
     transition: all .3s;
     background-color: #fff;
     display: flex;
@@ -391,7 +391,6 @@ border: 0px solid #ffffff;
         font-weight: bolder;
         letter-spacing: 2px;
         background-color: #7F3DFF;
-        // border-radius: 20px;
         transition: all 1s ease-in-out;
 
         &.removed {
@@ -402,6 +401,12 @@ border: 0px solid #ffffff;
         &.up {
             height: 0;
             margin-top: -10px;
+        }
+
+        .data-desc {
+            width: 180px;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         p {
@@ -465,7 +470,6 @@ border: 0px solid #ffffff;
             align-items: center;
             justify-content: center;
             background-color: #b1b1b1;
-            border-radius: 10px;
             font-size: 13px;
             color: #fff;
     
@@ -535,7 +539,7 @@ border: 0px solid #ffffff;
         }
 
         .data {
-            font-size: 30px;
+            font-size: 26px;
             font-weight: bold;
             margin: 10px 0;
             color: #fff;
